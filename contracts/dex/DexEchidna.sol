@@ -9,10 +9,6 @@ contract DexEchidna {
     SwappableToken public token2;
     Dex dex;
 
-    event BalanceToken1(uint256);
-    event BalanceToken2(uint256);
-    event SwapDex(string, uint256);
-
     constructor() {
         dex = new Dex();
         token1 = new SwappableToken(address(dex), "Token One", "TKNO", 110);
@@ -39,6 +35,6 @@ contract DexEchidna {
             dex.swap(address(token1), address(token2), swapAmount);
         }
 
-        assert(token1.balanceOf(address(dex)) == 0 || token2.balanceOf(address(dex)) == 0);
+        assert(token1.balanceOf(address(dex)) >= 90 ether || token2.balanceOf(address(dex)) >= 90 ether);
     }
 }

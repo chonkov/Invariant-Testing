@@ -43,14 +43,14 @@ describe("Dex exploit", function () {
       ["approve(address,address,uint256)"](
         attacker.address,
         dex.target,
-        ethers.parseEther("500")
+        ethers.parseEther("100")
       );
     await swappableToken2
       .connect(attacker)
       ["approve(address,address,uint256)"](
         attacker.address,
         dex.target,
-        ethers.parseEther("500")
+        ethers.parseEther("100")
       );
 
     await dex

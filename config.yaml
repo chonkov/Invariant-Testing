@@ -1,5 +1,0 @@
-testMode: assertion
-
-cryticArgs: ["--solc-remaps", "@=code/node_modules/@"]
-
-shrinkLimit: 20000
