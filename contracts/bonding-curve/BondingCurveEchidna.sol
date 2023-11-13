@@ -76,11 +76,11 @@ contract BondingCurveEchidna {
         uint256 amount = _amount < 10 ** bondingCurve.decimals() ? 1 ether : _amount;
 
         test_buy_should_be_sucessful(amount);
-        uint256 startPurchaseCost = bondingCurve.buyPriceCalculation(amount);
+        uint256 startPurchaseCost = bondingCurve.currentPrice();
 
         test_sell_is_executed_successfuly(amount);
 
-        uint256 endPurchaseCost = bondingCurve.sellPriceCalculation(amount);
+        uint256 endPurchaseCost = bondingCurve.currentPrice();
 
         assert(endPurchaseCost < startPurchaseCost);
     }

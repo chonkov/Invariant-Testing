@@ -2,7 +2,6 @@
 pragma solidity 0.8.21;
 
 import {Dex, SwappableToken} from "./Dex.sol";
-import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 
 contract DexEchidna {
     SwappableToken public token1;
@@ -16,7 +15,10 @@ contract DexEchidna {
 
         dex.setTokens(address(token1), address(token2));
 
+        token1.approve(address(dex), 100);
         dex.addLiquidity(address(token1), 100);
+
+        token2.approve(address(dex), 100);
         dex.addLiquidity(address(token2), 100);
 
         dex.renounceOwnership();
@@ -28,10 +30,10 @@ contract DexEchidna {
         uint256 balance2 = token2.balanceOf(address(this));
 
         if (direction) {
-            uint256 swapAmount = Math.max(amount % balance2, balance2 - (amount % balance2));
+            uint256 swapAmount = amount % balance2;
             dex.swap(address(token2), address(token1), swapAmount);
         } else {
-            uint256 swapAmount = Math.max(amount % balance1, balance1 - (amount % balance1));
+            uint256 swapAmount = amount % balance1;
             dex.swap(address(token1), address(token2), swapAmount);
         }
 
