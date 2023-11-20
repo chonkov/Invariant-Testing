@@ -1,9 +1,1 @@
 testMode: assertion
-
-cryticArgs:
-  [
-    "--solc-remaps",
-    "@=code/node_modules/@ erc-payable-token=code/node_modules/erc-payable-token",
-  ]
-
-shrinkLimit: 20000

@@ -7,10 +7,6 @@ import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 contract BondingCurveEchidna {
     BondingCurveSale bondingCurve;
 
-    event BalanceToken1(uint256);
-    event BalanceToken2(uint256);
-    event SwapDex(string, uint256);
-
     constructor() {
         bondingCurve = new BondingCurveSale("Bonding Curve Token", "BCT");
     }
